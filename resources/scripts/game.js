@@ -1,9 +1,5 @@
 var socket = io();
 
-socket.on('test', (msg) => {
-   alert('message: ' + msg);
-});
-
 $("#enterGame").click((e) => {
     let username = $("#usernameInput").val();
 
@@ -19,3 +15,35 @@ $("#enterGame").click((e) => {
 
 });
 
+// SOCKETS EVENTS //
+
+function displayRoomList() {
+    $.get('/roomsTemplate', (data) => {
+        $(".div-center.main-div").hide();
+
+        if ($(".div-center.rooms-div").length == 0) {
+            $(".back").append(data);
+        }
+
+        $(".div-center.rooms-div").show();
+    });
+}
+
+function displayMain() {
+    $(".div-center.rooms-div").hide();
+    $(".div-center.main-div").show();
+}
+
+socket.on('joinServer', (data) => {
+    if (data.success) {
+        alert("You have joined the server!");
+        displayRoomList();
+    } else {
+        alert("You could not join the server!\nReason: " + data.message);
+    }
+});
+
+socket.on('disconnect', () => {
+    alert("You have been disconnected from the server!");
+    displayMain();
+});

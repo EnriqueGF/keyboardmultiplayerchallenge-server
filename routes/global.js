@@ -4,6 +4,9 @@ router.get('/', (req, res) => {
     res.sendFile(global.__basedir + '/views/index/index.html');
 });
 
+router.get('/roomsTemplate', (req, res) => {
+    res.sendFile(global.__basedir + '/views/index/rooms.html');
+});
 
 // Resources
 router.get('/resources/custom.css', (req, res) => {
