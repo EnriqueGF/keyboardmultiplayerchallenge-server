@@ -1,5 +1,11 @@
 const game = require('./Game')
 
+function disconnect(socket) {
+    playerList.splice(playerList.indexOf(this.socket));
+    console.log('user disconnected');
+    console.log(game.getPlayerList());
+}
+
 function joinServer(data, socket) {
     if (playerList.indexOf(socket) !== -1) {
         socket.emit('joinServer', {
@@ -20,4 +26,18 @@ function joinServer(data, socket) {
     console.log(game.getPlayerList());
 }
 
-module.exports = {joinServer};
+function getRooms(socket) {
+
+    if (!game.isPlayerConnected(socket)) {
+        socket.emit('getRooms', {
+            success: false,
+            message: 'You are not connected to the server.'
+        });
+        return;
+    }
+    socket.emit('roomsInfo', {
+        rooms: [1, 2, 3]
+    });
+}
+
+module.exports = {joinServer, disconnect, getRooms};

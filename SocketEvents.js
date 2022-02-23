@@ -8,9 +8,7 @@ module.exports = class SocketEvents {
 
     events() {
         this.socket.on('disconnect', () => {
-            playerList.splice(playerList.indexOf(this.socket));
-            console.log('user disconnected');
-            console.log(this.getPlayerList());
+            socketActions.disconnect(this.socket);
         });
 
         this.socket.on('joinServer', (data) => {
@@ -18,9 +16,7 @@ module.exports = class SocketEvents {
         });
 
         this.socket.on('getRoomsInfo', () => {
-            this.socket.emit('roomsInfo', {
-                rooms: [1, 2, 3]
-            });
+            socketActions.getRooms(this.socket);
         });
     }
 

@@ -2,4 +2,9 @@ function getPlayerList() {
     return playerList.map(socket => socket.data.nickname).join(', ')
 }
 
-module.exports = {getPlayerList};
+// function to check if a socket is in the playerList
+function isPlayerConnected(socket) {
+    return playerList.includes(socket)
+}
+
+module.exports = {getPlayerList, isPlayerConnected};
