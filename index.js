@@ -5,9 +5,11 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+global.__basedir = __dirname;
+
+const router = (global.router = (express.Router()));
+app.use('/global', require('./routes/global'))
+app.use(router);
 
 io.on('connection', (socket) => {
   console.log('a user connected');
