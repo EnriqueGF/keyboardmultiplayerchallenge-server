@@ -1,3 +1,5 @@
+const socketActions = require('./SocketActions')
+
 module.exports = class SocketEvents {
     constructor(socket) {
         this.socket = socket;
@@ -12,28 +14,15 @@ module.exports = class SocketEvents {
         });
 
         this.socket.on('joinServer', (data) => {
-            if (playerList.indexOf(this.socket) !== -1) {
-                this.socket.emit('joinServer', {
-                    success: false,
-                    message: 'You are already in the server.'
-                });
-                return;
-            }
+            socketActions.joinServer(data, this.socket);
+        });
 
-            this.socket.data.nickname = data.nickname;
-            playerList.push(this.socket);
-
-            this.socket.emit('joinServer', {
-                success: true,
-                message: 'You have joined the server.'
+        this.socket.on('getRoomsInfo', () => {
+            this.socket.emit('roomsInfo', {
+                rooms: [1, 2, 3]
             });
-
-            console.log(this.getPlayerList());
         });
     }
 
-    getPlayerList() {
-        return playerList.map(socket => socket.data.nickname).join(', ')
-    }
 
 }

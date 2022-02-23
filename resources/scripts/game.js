@@ -15,8 +15,6 @@ $("#enterGame").click((e) => {
 
 });
 
-// SOCKETS EVENTS //
-
 function displayRoomList() {
     $.get('/roomsTemplate', (data) => {
         $(".div-center.main-div").hide();
@@ -34,6 +32,12 @@ function displayMain() {
     $(".div-center.main-div").show();
 }
 
+function getRoomsInfo() {
+    socket.emit('getRoomsInfo', "");
+}
+
+// SOCKETS EVENTS & STUFF //
+
 socket.on('joinServer', (data) => {
     if (data.success) {
         alert("You have joined the server!");
@@ -47,3 +51,7 @@ socket.on('disconnect', () => {
     alert("You have been disconnected from the server!");
     displayMain();
 });
+
+socket.on('roomsInfo', (data) => {
+    alert("Rooms info: "+ data);
+})
