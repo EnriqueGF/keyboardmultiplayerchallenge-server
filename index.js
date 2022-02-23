@@ -2,25 +2,27 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const { Server } = require("socket.io");
+const {Server} = require("socket.io");
 const io = new Server(server);
 
+global.playerList = [];
 global.__basedir = __dirname;
 
 const router = (global.router = (express.Router()));
 app.use('/global', require('./routes/global'))
 app.use(router);
 
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-  });
+server.listen(3000, () => {
+    console.log('listening on *:3000');
 });
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+//
+
+const SocketEvents = require('./SocketEvents');
+
+io.on('connection', (socket) => {
+    let socketEvent = new SocketEvents(socket);
 });
+
+//
+
