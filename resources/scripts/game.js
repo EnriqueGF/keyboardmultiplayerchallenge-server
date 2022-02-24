@@ -24,6 +24,7 @@ function displayRoomList() {
         }
 
         $(".div-center.rooms-div").show();
+        loadRoomsInfo();
     });
 }
 
@@ -32,15 +33,16 @@ function displayMain() {
     $(".div-center.main-div").show();
 }
 
-function getRoomsInfo() {
-    socket.emit('getRoomsInfo', "");
+
+function loadRoomsInfo() {
+    getRoomsInfo();
 }
 
 // SOCKETS EVENTS & STUFF //
 
 socket.on('joinServer', (data) => {
     if (data.success) {
-        alert("You have joined the server!");
+        // alert("You have joined the server!");
         displayRoomList();
     } else {
         alert("You could not join the server!\nReason: " + data.message);
@@ -50,8 +52,22 @@ socket.on('joinServer', (data) => {
 socket.on('disconnect', () => {
     alert("You have been disconnected from the server!");
     displayMain();
+    location.reload();
 });
 
 socket.on('roomsInfo', (data) => {
-    alert("Rooms info: "+ data);
+    console.log("Rooms info:");
+    $("#roomListUl").html("");
+
+    for (let i = 0; i < data.length; i++) {
+        let name = data[i].name;
+        let hasPassword = data[i].hasPassword;
+
+        console.log("Room: " + name + " hasPassword: " + hasPassword);
+        $("#roomListUl").append("<li class=\"list-group-item\">" + name + "</li>");
+    }
 })
+
+function getRoomsInfo() {
+    socket.emit('getRoomsInfo', "");
+}

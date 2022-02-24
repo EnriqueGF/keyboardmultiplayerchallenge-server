@@ -35,9 +35,8 @@ function getRooms(socket) {
         });
         return;
     }
-    socket.emit('roomsInfo', {
-        rooms: [1, 2, 3]
-    });
+
+    socket.emit('roomsInfo', game.getRooms());
 }
 
 module.exports = {joinServer, disconnect, getRooms};
