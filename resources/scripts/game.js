@@ -63,7 +63,6 @@ socket.on('roomsInfo', (data) => {
         let name = data[i].name;
         let hasPassword = data[i].hasPassword;
 
-        console.log("Room: " + name + " hasPassword: " + hasPassword);
         $("#roomListUl").append("<li class=\"list-group-item\">" + name + "</li>");
     }
 })

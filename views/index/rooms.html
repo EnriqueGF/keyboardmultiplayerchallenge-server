@@ -5,7 +5,7 @@
                 <h1>Rooms</h1>
             </div>
             <div class="col-md-3">
-                <button style="float:right" type="button" class="btn btn-primary">Create Room</button>
+                <button style="float:right" type="button" class="btn btn-primary" onclick="$('#createRoomModal').modal('show')">Create Room</button>
             </div>
         </div>
         <div class="row">
@@ -17,4 +17,20 @@
         </div>
     </div>
     </span>
+</div>
+
+<div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="createRoomModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create room</h5>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Create Room</button>
+            </div>
+        </div>
+    </div>
 </div>
