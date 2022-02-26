@@ -3,13 +3,12 @@ module.exports = class Room {
     playerList = [];
     title = "";
     id = undefined;
-    hasPassword = false;
     password = undefined;
     text = "";
 
-    constructor(title, hasPassword) {
+    constructor(title, password) {
         this.title = title;
-        this.hasPassword = hasPassword;
+        this.password = password;
     }
 
 }

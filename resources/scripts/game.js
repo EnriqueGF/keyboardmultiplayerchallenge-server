@@ -70,3 +70,7 @@ socket.on('roomsInfo', (data) => {
 function getRoomsInfo() {
     socket.emit('getRoomsInfo', "");
 }
+
+function createRoom() {
+    socket.emit('createRoom', {'name': $("#createRoomName").val(), 'password': $("#createPassword").val()});
+}

@@ -1,3 +1,5 @@
+const Room = require("./Room");
+
 function getPlayerList() {
     return playerList.map(socket => socket.data.nickname).join(', ')
 }
@@ -16,9 +18,21 @@ function getRooms() {
     })
 }
 
+function createRoom(data, callback) {
+
+    let room = new Room(
+        data.name, data.password
+    );
+
+    rooms.push(room);
+    callback();
+    return room;
+}
+
 module.exports =
     {
         getPlayerList,
         isPlayerConnected,
-        getRooms
+        getRooms,
+        createRoom
     };

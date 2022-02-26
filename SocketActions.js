@@ -29,14 +29,30 @@ function joinServer(data, socket) {
 function getRooms(socket) {
 
     if (!game.isPlayerConnected(socket)) {
-        socket.emit('getRooms', {
-            success: false,
-            message: 'You are not connected to the server.'
-        });
+        emitNotConnectedMessage()
         return;
     }
 
     socket.emit('roomsInfo', game.getRooms());
 }
 
-module.exports = {joinServer, disconnect, getRooms};
+function createRoom(data, socket) {
+
+    if (!game.isPlayerConnected(socket)) {
+        emitNotConnectedMessage()
+        return;
+    }
+
+    game.createRoom(data, () => {
+        socket.emit('roomsInfo', game.getRooms());
+    });
+}
+
+function emitNotConnectedMessage() {
+    socket.emit('getRooms', {
+        success: false,
+        message: 'You are not connected to the server.'
+    });
+}
+
+module.exports = {joinServer, disconnect, getRooms, createRoom};
