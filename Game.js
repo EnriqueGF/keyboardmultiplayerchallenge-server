@@ -35,13 +35,11 @@ function playerDisconnected(socket) {
 
     rooms.forEach(room => {
         if (room.playerList.includes(socket)) {
-            room.removePlayer(this.socket);
-        }
-
-        if (room.playerList.length === 0) {
-            rooms.splice(rooms.indexOf(room), 1);
+            room.removePlayer(socket);
         }
     });
+
+    rooms = rooms.filter(room => room.playerList.length > 0);
 
     playerList.splice(playerList.indexOf(socket));
 }

@@ -17,6 +17,7 @@ module.exports = class Room {
     }
 
     removePlayer(player) {
+        console.log('El jugador ' + player.data.nickname + ' se ha desconectado de la sala ' + this.title);
         this.playerList.splice(this.playerList.indexOf(player), 1);
     }
 
