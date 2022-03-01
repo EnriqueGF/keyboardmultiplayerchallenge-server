@@ -25,10 +25,19 @@
 }
 
 .div-center.rooms-div {
-    width: 850px;
+    width: 45%;
 }
 
-.div-center.rooms-div .content{
+.div-center.rooms-div .content {
+    vertical-align: initial;
+}
+
+.div-center.rooms-chat-div {
+    width: 20%;
+    left: 70%;
+}
+
+.div-center.rooms-chat-div .content {
     vertical-align: initial;
 }
 
@@ -62,4 +71,12 @@ div.content {
     100% {
         background-position: 0% 50%;
     }
+}
+
+.chatbox {
+    overflow: scroll;
+    background-color: lightblue;
+    width: 100%;
+    min-height: 100px;
+    max-height: 150px;
 }

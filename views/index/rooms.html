@@ -6,8 +6,12 @@
             </div>
 
             <div class="col-md-5">
-                <button style="float:right" type="button" class="btn btn-primary" onclick="$('#createRoomModal').modal('show')">Create Room</button>
-                <button style="float:right; margin-right:4px" type="button" class="btn btn-secondary" onclick="refreshRoomListBtn();">Refresh</button>
+                <button style="float:right" type="button" class="btn btn-primary"
+                        onclick="$('#createRoomModal').modal('show')">Create Room
+                </button>
+                <button style="float:right; margin-right:4px" type="button" class="btn btn-secondary"
+                        onclick="refreshRoomListBtn();">Refresh
+                </button>
             </div>
         </div>
         <div class="row">
@@ -21,7 +25,35 @@
     </span>
 </div>
 
-<div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="createRoomModal" aria-hidden="true">
+<div class="div-center rooms-chat-div">
+    <div class="content">
+        <div class="row">
+            <div class="col-md-7">
+                <h2>General Chat</h2>
+            </div>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="chatbox">
+
+                </div>
+                <div class="row" style="margin-top:10px">
+                    <div class="col-md-6">
+                        <input type="text"/>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" style="margin-left:15px" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </span>
+</div>
+
+<div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="createRoomModal"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -32,13 +64,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="createRoomName">Room Name</label>
-                            <input type="text" id="createRoomName" class="form-control"  placeholder="Enter Room Name">
+                            <input type="text" id="createRoomName" class="form-control" placeholder="Enter Room Name">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="createPassword">Room Password</label>
-                            <input type="text" id="createPassword" class="form-control" placeholder="Leave blank for public">
+                            <input type="text" id="createPassword" class="form-control"
+                                   placeholder="Leave blank for public">
                         </div>
                     </div>
                 </div>
