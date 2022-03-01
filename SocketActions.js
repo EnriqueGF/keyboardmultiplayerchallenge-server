@@ -1,9 +1,10 @@
 const game = require('./Game')
 
 function disconnect(socket) {
-    playerList.splice(playerList.indexOf(this.socket));
-    console.log('user disconnected');
-    console.log(game.getPlayerList());
+    game.playerDisconnected(socket);
+
+    console.log('Player disconnected');
+    console.log('Player list: ' + game.getPlayerList());
 }
 
 function joinServer(data, socket) {
@@ -42,6 +43,8 @@ function createRoom(data, socket) {
         emitNotConnectedMessage()
         return;
     }
+
+    data.player = socket;
 
     game.createRoom(data, () => {
         socket.emit('roomsInfo', game.getRooms());

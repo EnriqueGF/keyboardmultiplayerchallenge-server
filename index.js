@@ -8,7 +8,7 @@ const io = new Server(server);
 const Room = require("./Room");
 
 global.playerList = [];
-global.rooms = [new Room('Room1', false), new Room('Room2', true), new Room('Nueva sala de prueba!!!!', true)];
+global.rooms = [];
 global.__basedir = __dirname;
 
 const router = (global.router = (express.Router()));

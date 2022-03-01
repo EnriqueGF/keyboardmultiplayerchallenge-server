@@ -50,13 +50,11 @@ socket.on('joinServer', (data) => {
 });
 
 socket.on('disconnect', () => {
-    alert("You have been disconnected from the server!");
     displayMain();
     location.reload();
 });
 
 socket.on('roomsInfo', (data) => {
-    console.log("Rooms info:");
     $("#roomListUl").html("");
 
     for (let i = 0; i < data.length; i++) {
@@ -65,6 +63,8 @@ socket.on('roomsInfo', (data) => {
 
         $("#roomListUl").append("<li class=\"list-group-item\">" + name + "</li>");
     }
+
+    $('#createRoomModal').modal('hide')
 })
 
 function getRoomsInfo() {

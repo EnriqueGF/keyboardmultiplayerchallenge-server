@@ -11,4 +11,13 @@ module.exports = class Room {
         this.password = password;
     }
 
+    addPlayer(player) {
+        this.playerList.push(player);
+        console.log('El jugador ' + player.data.nickname + ' se ha unido a la sala ' + this.title);
+    }
+
+    removePlayer(player) {
+        this.playerList.splice(this.playerList.indexOf(player), 1);
+    }
+
 }
