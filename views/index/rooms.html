@@ -1,10 +1,9 @@
-<div class="div-center rooms-div">
-    <div class="content">
-        <div class="row">
+<div class="jumbotron d-flex align-items-center min-vh-100">
+    <div class="container containerRooms">
+        <div class="row" style="padding:1em">
             <div class="col-md-7">
                 <h1>Rooms</h1>
             </div>
-
             <div class="col-md-5">
                 <button style="float:right" type="button" class="btn btn-primary"
                         onclick="$('#createRoomModal').modal('show')">Create Room
@@ -14,7 +13,7 @@
                 </button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding:1em">
             <div class="col-md-12">
                 <ul class="list-group" id="roomListUl">
                     <li class="list-group-item">Example element</li>
@@ -22,35 +21,9 @@
             </div>
         </div>
     </div>
-    </span>
 </div>
 
-<div class="div-center rooms-chat-div">
-    <div class="content">
-        <div class="row">
-            <div class="col-md-7">
-                <h2>General Chat</h2>
-            </div>
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="chatbox">
 
-                </div>
-                <div class="row" style="margin-top:10px">
-                    <div class="col-md-6">
-                        <input type="text"/>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" style="margin-left:15px" class="btn btn-primary">Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </span>
-</div>
 
 <div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="createRoomModal"
      aria-hidden="true">

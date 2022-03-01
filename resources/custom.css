@@ -80,3 +80,10 @@ div.content {
     min-height: 100px;
     max-height: 150px;
 }
+
+.containerRooms {
+    overflow: auto;
+    padding: 2em;
+    border-bottom: 2px solid #ccc;
+    background-color: #fff;
+}
