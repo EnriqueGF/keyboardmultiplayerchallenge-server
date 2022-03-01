@@ -25,8 +25,8 @@ function createRoom(data, callback) {
     );
 
     room.addPlayer(data.player);
-
     rooms.push(room);
+
     callback();
     return room;
 }

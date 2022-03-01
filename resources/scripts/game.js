@@ -38,6 +38,10 @@ function loadRoomsInfo() {
     getRoomsInfo();
 }
 
+function refreshRoomListBtn() {
+    getRoomsInfo();
+}
+
 // SOCKETS EVENTS & STUFF //
 
 socket.on('joinServer', (data) => {
